@@ -8,11 +8,10 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="开始!" />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/details">Details</RouterLink>
-      </nav>
+      <RouterLink to="/">Home</RouterLink>
+      <RouterLink to="/about">About</RouterLink>
+      <RouterLink to="/details">Details</RouterLink>
+      <RouterLink to="/table">Table</RouterLink>
     </div>
   </header>
 
@@ -22,7 +21,7 @@ import HelloWorld from './components/HelloWorld.vue'
 <style scoped>
 header {
   line-height: 1.5;
-  max-height: 100vh;
+  max-height: 200px;
   height: 100vh;
 }
 
