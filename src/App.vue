@@ -4,86 +4,81 @@ import HelloWorld from './components/HelloWorld.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="开始!" />
-
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/about">About</RouterLink>
-      <RouterLink to="/details">Details</RouterLink>
-      <RouterLink to="/table">Table</RouterLink>
+  <div class="container">
+    <div class="top-layout">
+      <h1>Vue 平台管理系统</h1>
     </div>
-  </header>
+    <div class="main">
+      <div class="menu-layout">
+        <ul>
+          <li>
+            <RouterLink to="/">Home</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/about">About</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/details">Details</RouterLink>
+          </li>
+          <li>
+            <RouterLink to="/table">Table</RouterLink>
+          </li>
+        </ul>
+      </div>
+      <div class="page-layout">
+        <RouterView />
+      </div>
 
-  <RouterView />
+    </div>
+  </div>
+
+
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 200px;
+.container {
   height: 100vh;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+  .top-layout {
+    height: 60px;
+    background: #daefda;
+    h1{
+      margin: 0;
+      height: 60px;
+      line-height: 60px;
+      padding: 0 18px;
+    }
+  }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-main {
-  padding: 30px;
-}
-
-@media (min-width: 1024px) {
-  header {
+  .main {
+    height: calc(100vh - 60px);
     display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-    border-right: 1px solid #373737;
+
+    .menu-layout {
+      flex: 1;
+      max-width: 160px;
+      height: calc(100vh - 60px);
+      border-right: 1px solid #cccccc;
+
+      ul {
+        padding: 0;
+
+        li {
+          list-style: none;
+          height: 36px;
+          line-height: 36px;
+          padding-left: 20px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .page-layout {
+      flex: 1;
+      height: calc(100vh - 60px);
+    }
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
 }
 </style>
