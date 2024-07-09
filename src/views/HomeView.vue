@@ -3,7 +3,5 @@ import WelcomeList from '../components/WelcomeList.vue'
 </script>
 
 <template>
-  <main>
-    <WelcomeList />
-  </main>
+  <h2>首页</h2>
 </template>

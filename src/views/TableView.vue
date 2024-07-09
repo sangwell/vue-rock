@@ -4,17 +4,9 @@ import { Button } from 'ant-design-vue'
 
 
 <template>
-  <div class="table">
-    <h1>Table page</h1>
-  </div>
+  <h2>Table</h2>
 </template>
 
 <style>
-@media (min-width: 1024px) {
-  .table {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
+
 </style>

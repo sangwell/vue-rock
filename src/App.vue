@@ -1,6 +1,16 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { useRoute, RouterView, useRouter } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
+
+function navigateTo(path: string) {
+  router.push(path)
+}
+
+const isActive = (path: string) => {
+  return route.path === path
+}
 </script>
 
 <template>
@@ -11,17 +21,17 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="main">
       <div class="menu-layout">
         <ul>
-          <li>
-            <RouterLink to="/">Home</RouterLink>
+          <li :class="{ active: isActive('/') }" @click="navigateTo('/')">
+            首页
           </li>
-          <li>
-            <RouterLink to="/about">About</RouterLink>
+          <li :class="{ active: isActive('/about') }" @click="navigateTo('/about')">
+            About
           </li>
-          <li>
-            <RouterLink to="/details">Details</RouterLink>
+          <li :class="{ active: isActive('/details') }" @click="navigateTo('/details')">
+            Details
           </li>
-          <li>
-            <RouterLink to="/table">Table</RouterLink>
+          <li :class="{ active: isActive('/table') }" @click="navigateTo('/table')">
+            Table
           </li>
         </ul>
       </div>
@@ -42,7 +52,8 @@ import HelloWorld from './components/HelloWorld.vue'
   .top-layout {
     height: 60px;
     background: #daefda;
-    h1{
+
+    h1 {
       margin: 0;
       height: 60px;
       line-height: 60px;
@@ -65,10 +76,18 @@ import HelloWorld from './components/HelloWorld.vue'
 
         li {
           list-style: none;
-          height: 36px;
-          line-height: 36px;
+          height: 50px;
+          line-height: 50px;
           padding-left: 20px;
           font-size: 14px;
+          border-bottom: 1px solid #ccc;
+          cursor: pointer;
+        }
+
+        .active {
+          background-color: #4343e9;
+          font-weight: bold;
+          color: #ffffff;
         }
       }
     }

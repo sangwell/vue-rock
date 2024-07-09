@@ -7,7 +7,7 @@ const count = ref(0)
 
 <template>
   <main>
-    <h1>Details</h1>
+    <h2>Details</h2>
     <div class="row">
       <p>Message is: {{ message }}</p>
       <input v-model="message" placeholder="edit me" />
