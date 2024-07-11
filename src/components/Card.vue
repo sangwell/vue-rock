@@ -35,6 +35,7 @@ defineProps(['title', 'value'])
     font-weight: bold;
     padding: 0 20px;
     color: green;
+    overflow: hidden;
   }
 }
 </style>
