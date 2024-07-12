@@ -24,7 +24,9 @@ const items = ref([
 const dataSource = ref(
   [
     { title: '买蛋糕~', status: false },
-    { title: '看书', status: true }
+    { title: '看书', status: true },
+    { title: '学习', status: false },
+    { title: '打羽毛球', status: false },
   ]
 )
 
@@ -99,8 +101,8 @@ const day = ref<Dayjs>();
                    :columns="columns"
                    size="small"
                    :pagination="false"
-                   :style="{ minHeight: '300px' }"
-                   :scroll="{y:255}">
+                   :style="{ minHeight: '500px' }"
+                   :scroll="{y:455}">
             <template #bodyCell="{ column,record }">
               <template v-if="column.key === 'title'">
                 <span v-if="!record.status">{{ record.title }}</span>

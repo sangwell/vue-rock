@@ -24,8 +24,11 @@ const isActive = (path: string) => {
           <li :class="{ active: isActive('/') }" @click="navigateTo('/')">
             首页
           </li>
-          <li :class="{ active: isActive('/about') }" @click="navigateTo('/about')">
-            About
+          <li :class="{ active: isActive('/chart') }" @click="navigateTo('/chart')">
+            图表
+          </li>
+          <li :class="{ active: isActive('/http-request') }" @click="navigateTo('/http-request')">
+            Http Request
           </li>
           <li :class="{ active: isActive('/details') }" @click="navigateTo('/details')">
             Details
@@ -85,7 +88,7 @@ const isActive = (path: string) => {
         }
 
         .active {
-          background-color: #4343e9;
+          background-color: #1890ff;
           font-weight: bold;
           color: #ffffff;
         }
