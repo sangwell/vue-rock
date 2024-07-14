@@ -1,115 +1,90 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
-import type { UnwrapRef } from 'vue';
-import type { FormProps } from 'ant-design-vue';
-import type { TableProps } from 'ant-design-vue';
-import { usePagination } from 'vue-request';
-import { computed } from 'vue';
-import axios from 'axios';
+import { reactive, ref } from 'vue'
+import type { UnwrapRef } from 'vue'
+import type { FormProps } from 'ant-design-vue'
 
 interface FormState {
-  user: string;
-  password: string;
+  title: string;
 }
 
+const data = [
+  { title: '《活着》', author: '余华', rate: 4 },
+  { title: '《三体》', author: '刘慈欣', rate: 4 },
+  { title: '《刀锋》', author: '毛姆', rate: 4 },
+  { 'title': '《边城》', 'author': '沈从文', 'rate': 4 },
+  { 'title': '《围城》', 'author': '钱钟书', 'rate': 4 },
+  { 'title': '《白鹿原》', 'author': '陈忠实', 'rate': 5 },
+  { 'title': '《平凡的世界》', 'author': '路遥', 'rate': 5 },
+  { 'title': '《红楼梦》', 'author': '曹雪芹', 'rate': 5 },
+  { 'title': '《许三观卖血记》', 'author': '余华', 'rate': 4 },
+  { 'title': '《狼图腾》', 'author': '姜戎', 'rate': 4 },
+  { 'title': '《西游记》', 'author': '吴承恩', 'rate': 5 },
+  { 'title': '《倚天屠龙记》', 'author': '金庸', 'rate': 4 },
+  { 'title': '《射雕英雄传》', 'author': '金庸', 'rate': 5 }
+]
+
 const formState: UnwrapRef<FormState> = reactive({
-  user: '',
-  password: '',
-});
-const handleFinish: FormProps['onFinish'] = values => {
-  console.log(values, formState);
-};
+  title: ''
+})
+const handleFinish: FormProps['onFinish'] = () => {
+  dataSource.value = data.filter(item => item.title.includes(formState.title) ||
+    item.author.includes(formState.title))
+}
 const handleFinishFailed: FormProps['onFinishFailed'] = errors => {
-  console.log(errors);
-};
+  console.log(errors)
+}
+
+const handleInputChange = () => {
+  if (!formState.title) {
+    dataSource.value = data
+  }
+}
 
 const columns = [
   {
-    title: 'Name',
-    dataIndex: 'name',
-    sorter: true,
-    width: '20%',
+    title: '名称',
+    dataIndex: 'title',
+    key: 'title',
+    width: '20%'
   },
   {
-    title: 'Gender',
-    dataIndex: 'gender',
-    filters: [
-      { text: 'Male', value: 'male' },
-      { text: 'Female', value: 'female' },
-    ],
-    width: '20%',
+    title: '作者',
+    dataIndex: 'author',
+    key: 'author',
+    width: '10%'
   },
   {
-    title: 'Email',
-    dataIndex: 'email',
+    title: '评分',
+    dataIndex: 'rate',
+    key: 'rate',
+    width: '10%'
   },
-];
+  {
+    title: '操作',
+    key: 'operation',
+    width: '10%'
+  }
+]
 
-type APIParams = {
-  results: number;
-  page?: number;
-  sortField?: string;
-  sortOrder?: number;
-  [key: string]: any;
-};
-type APIResult = {
-  results: {
-    gender: 'female' | 'male';
-    name: string;
-    email: string;
-  }[];
-};
+const dataSource = ref(
+  data
+)
 
-const queryData = (params: APIParams) => {
-  return axios.get<APIResult>('https://randomuser.me/api?noinfo', { params });
-};
-
-const {
-  data: dataSource,
-  run,
-  loading,
-  current,
-  pageSize,
-} = usePagination(queryData, {
-  formatResult: res => res.data.results,
-  pagination: {
-    currentKey: 'page',
-    pageSizeKey: 'results',
-  },
-});
-
-const pagination = computed(() => ({
-  total: 200,
-  current: current.value,
-  pageSize: pageSize.value,
-}));
-
-const handleTableChange: TableProps['onChange'] = (
-  pag: { pageSize: number; current: number },
-  filters: any,
-  sorter: any,
-) => {
-  run({
-    results: pag.pageSize!,
-    page: pag?.current,
-    sortField: sorter.field,
-    sortOrder: sorter.order,
-    ...filters,
-  });
-};
 </script>
 
 <template>
   <main>
     <h2>Http Request</h2>
     <a-form
+      class="form-margin"
       layout="inline"
       :model="formState"
       @finish="handleFinish"
       @finishFailed="handleFinishFailed"
     >
       <a-form-item>
-        <a-input v-model:value="formState.user" placeholder="请输入名称">
+        <a-input v-model:value="formState.title" placeholder="请输入名称/作者查找" allowClear
+                 @input="handleInputChange">
         </a-input>
       </a-form-item>
       <a-form-item>
@@ -122,16 +97,17 @@ const handleTableChange: TableProps['onChange'] = (
       </a-form-item>
     </a-form>
 
-    <a-table
-      :columns="columns"
-      :row-key="record => record.login.uuid"
-      :data-source="dataSource"
-      :pagination="pagination"
-      :loading="loading"
-      @change="handleTableChange"
-    >
-      <template #bodyCell="{ column, text }">
-        <template v-if="column.dataIndex === 'name'">{{ text.first }} {{ text.last }}</template>
+    <a-table :dataSource="dataSource"
+             :columns="columns">
+      <template #bodyCell="{ column,record }">
+        <template v-if="column.key === 'rate'">
+          <a-rate v-model:value="record.rate" allow-half disabled />
+        </template>
+        <template v-if="column.key === 'operation'">
+          <span class="delete">
+            删除
+          </span>
+        </template>
       </template>
     </a-table>
 
@@ -141,5 +117,14 @@ const handleTableChange: TableProps['onChange'] = (
 <style scoped>
 main {
   padding: 10px;
+}
+
+.form-margin {
+  margin-bottom: 15px;
+}
+
+.delete {
+  color: red;
+  cursor: pointer;
 }
 </style>
