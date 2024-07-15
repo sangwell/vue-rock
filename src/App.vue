@@ -27,14 +27,14 @@ const isActive = (path: string) => {
           <li :class="{ active: isActive('/chart') }" @click="navigateTo('/chart')">
             图表
           </li>
+          <li :class="{ active: isActive('/table') }" @click="navigateTo('/table')">
+            表格
+          </li>
           <li :class="{ active: isActive('/http-request') }" @click="navigateTo('/http-request')">
             Http Request
           </li>
           <li :class="{ active: isActive('/details') }" @click="navigateTo('/details')">
             Details
-          </li>
-          <li :class="{ active: isActive('/table') }" @click="navigateTo('/table')">
-            Table
           </li>
         </ul>
       </div>
