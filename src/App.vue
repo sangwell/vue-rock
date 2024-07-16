@@ -33,6 +33,9 @@ const isActive = (path: string) => {
           <li :class="{ active: isActive('/http-request') }" @click="navigateTo('/http-request')">
             Http Request
           </li>
+          <li :class="{ active: isActive('/state') }" @click="navigateTo('/state')">
+            状态管理
+          </li>
           <li :class="{ active: isActive('/details') }" @click="navigateTo('/details')">
             Details
           </li>
