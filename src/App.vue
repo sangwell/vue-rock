@@ -36,6 +36,9 @@ const isActive = (path: string) => {
           <li :class="{ active: isActive('/state') }" @click="navigateTo('/state')">
             状态管理
           </li>
+          <li :class="{ active: isActive('/ssr') }" @click="navigateTo('/ssr')">
+            SSR
+          </li>
           <li :class="{ active: isActive('/details') }" @click="navigateTo('/details')">
             Details
           </li>
