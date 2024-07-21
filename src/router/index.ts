@@ -26,6 +26,11 @@ const router = createRouter({
       component: () => import('../views/HttpRequest.vue')
     },
     {
+      path: '/table',
+      name: 'table',
+      component: () => import('../views/TableView.vue')
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting
@@ -42,22 +47,17 @@ const router = createRouter({
       component: () => import('../views/State.vue')
     },
     {
-      path: '/ssr',
-      name: 'ssr',
+      path: '/pinia',
+      name: 'pinia',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/SSR.vue')
+      component: () => import('../views/Pinia.vue')
     },
     {
       path: '/details',
       name: 'details',
       component: () => import('../views/Details.vue')
-    },
-    {
-      path: '/table',
-      name: 'table',
-      component: () => import('../views/TableView.vue')
     }
   ]
 })
