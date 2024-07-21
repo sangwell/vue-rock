@@ -1,14 +1,11 @@
-import express from 'express'
-import { createSSRApp } from 'vue'
-import { renderToString } from 'vue/server-renderer'
+import express from 'express';
+import { renderToString } from 'vue/server-renderer';
+import { createApp } from './app.js';
 
-const server = express()
+const server = express();
 
 server.get('/', (req, res) => {
-  const app = createSSRApp({
-    data: () => ({ count: 1 }),
-    template: `<button @click="count++">{{ count }}</button>`
-  })
+  const app = createApp();
 
   renderToString(app).then((html) => {
     res.send(`
@@ -16,15 +13,25 @@ server.get('/', (req, res) => {
     <html>
       <head>
         <title>Vue SSR Example</title>
+        <script type="importmap">
+          {
+            "imports": {
+              "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            }
+          }
+        </script>
+        <script type="module" src="/client.js"></script>
       </head>
       <body>
         <div id="app">${html}</div>
       </body>
     </html>
-    `)
-  })
-})
+    `);
+  });
+});
+
+server.use(express.static('.'));
 
 server.listen(3000, () => {
-  console.log('ready')
-})
+  console.log('ready');
+});
