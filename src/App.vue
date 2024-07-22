@@ -39,6 +39,9 @@ const isActive = (path: string) => {
           <li :class="{ active: isActive('/pinia') }" @click="navigateTo('/pinia')">
             Pinia状态管理
           </li>
+          <li :class="{ active: isActive('/dashboard') }" @click="navigateTo('/dashboard')">
+            Dashboard
+          </li>
           <li :class="{ active: isActive('/details') }" @click="navigateTo('/details')">
             Details
           </li>

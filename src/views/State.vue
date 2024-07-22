@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LeftPanel from '@/components/state-components/LeftPanel.vue'
 import RightPanel from '@/components/state-components/RightPanel.vue'
-import {store} from '../shared/state-store/store'
+import {store} from '@/shared/state-store/store'
 </script>
 
 <template>
