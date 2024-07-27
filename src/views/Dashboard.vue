@@ -4,6 +4,7 @@ import CalculateAttribute from '@/components/widgets/CalculateAttribute.vue'
 import ClassStyle from '@/components/widgets/ClassStyle.vue'
 import ConditionalRendering from '@/components/widgets/ConditionalRendering.vue'
 import ListRendering from '@/components/widgets/ListRendering.vue'
+import Event from '@/components/widgets/Event.vue'
 </script>
 
 <template>
@@ -28,6 +29,7 @@ import ListRendering from '@/components/widgets/ListRendering.vue'
         <ListRendering></ListRendering>
       </a-col>
       <a-col :span="6">
+        <Event></Event>
       </a-col>
       <a-col :span="6">
       </a-col>
