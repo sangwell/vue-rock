@@ -5,6 +5,7 @@ import ClassStyle from '@/components/widgets/ClassStyle.vue'
 import ConditionalRendering from '@/components/widgets/ConditionalRendering.vue'
 import ListRendering from '@/components/widgets/ListRendering.vue'
 import Event from '@/components/widgets/Event.vue'
+import Watch from '@/components/widgets/Watch.vue'
 </script>
 
 <template>
@@ -32,6 +33,7 @@ import Event from '@/components/widgets/Event.vue'
         <Event></Event>
       </a-col>
       <a-col :span="6">
+        <Watch></Watch>
       </a-col>
       <a-col :span="6">
       </a-col>
