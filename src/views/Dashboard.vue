@@ -9,6 +9,7 @@ import Watch from '@/components/widgets/Watch.vue'
 import TemplateReference from '@/components/widgets/TemplateReference.vue'
 import ComponentLayout from '@/components/widgets/ComponentLayout.vue'
 import DynamicComponent from '@/components/widgets/DynamicComponent.vue'
+import DefineModel from '@/components/widgets/DefineModel.vue'
 </script>
 
 <template>
@@ -50,7 +51,7 @@ import DynamicComponent from '@/components/widgets/DynamicComponent.vue'
         <DynamicComponent></DynamicComponent>
       </a-col>
       <a-col :span="6">
-
+        <DefineModel></DefineModel>
       </a-col>
       <a-col :span="6">
 
