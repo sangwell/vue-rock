@@ -10,6 +10,8 @@ import TemplateReference from '@/components/widgets/TemplateReference.vue'
 import ComponentLayout from '@/components/widgets/ComponentLayout.vue'
 import DynamicComponent from '@/components/widgets/DynamicComponent.vue'
 import DefineModel from '@/components/widgets/DefineModel.vue'
+import SlotLayout from '@/components/widgets/SlotLayout.vue'
+import DependencyInjection from '@/components/widgets/DependencyInjection.vue'
 </script>
 
 <template>
@@ -54,7 +56,18 @@ import DefineModel from '@/components/widgets/DefineModel.vue'
         <DefineModel></DefineModel>
       </a-col>
       <a-col :span="6">
-
+        <SlotLayout></SlotLayout>
+      </a-col>
+    </a-row>
+    <a-row :gutter="16">
+      <a-col :span="6">
+        <DependencyInjection></DependencyInjection>
+      </a-col>
+      <a-col :span="6">
+      </a-col>
+      <a-col :span="6">
+      </a-col>
+      <a-col :span="6">
       </a-col>
     </a-row>
 
