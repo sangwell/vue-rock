@@ -12,6 +12,8 @@ import DynamicComponent from '@/components/widgets/DynamicComponent.vue'
 import DefineModel from '@/components/widgets/DefineModel.vue'
 import SlotLayout from '@/components/widgets/SlotLayout.vue'
 import DependencyInjection from '@/components/widgets/DependencyInjection.vue'
+import Composables from '@/components/widgets/Composables.vue'
+import CustomDirective from '@/components/widgets/CustomDirective.vue'
 </script>
 
 <template>
@@ -64,8 +66,10 @@ import DependencyInjection from '@/components/widgets/DependencyInjection.vue'
         <DependencyInjection></DependencyInjection>
       </a-col>
       <a-col :span="6">
+        <Composables></Composables>
       </a-col>
       <a-col :span="6">
+        <CustomDirective></CustomDirective>
       </a-col>
       <a-col :span="6">
       </a-col>
